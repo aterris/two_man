@@ -14,16 +14,18 @@ require 'optparse'
 parser = OptionParser.new do |opts|
   opts.banner = 'Two Man Rule Launcher'
 
-  #opts.on( '-d', '--database DATABASE', [:dynamo_db, :riak], "Database Type: \t\t(required: dynamod_db or riak)" ) do |database|
-  #  @database = database
-  #end
+  opts.on( '-t', '--time TIME', "Allowed Key Offset Time \t\tDefault: 50(ms), Maximum: 500(ms)" ) do |time|
+    @key_offset_time = time || 50
+  end
 
 end
 parser.parse!
 
 def main(args)
   puts "No Launch Code Provided!" if args.first.nil?
-  TwoMan::Launcher.new(args.first)
+  raise "Invalid Key Offset Time" if @key_offset_time > 500
+
+  TwoMan::Launcher.new(args.first, @key_offset_time)
 end
 
 main(ARGV)

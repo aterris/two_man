@@ -1,46 +1,36 @@
 module TwoMan
   class Launcher
-    STATUS = [:ready, :armed, :launch, :error]
+    STATUS = [:ready, :armed, :launch]
 
-    attr_accessor :launch_code, :status, :indicator, :keys
+    attr_accessor :launch_code, :status, :indicator, :keys, :key_offset_time
 
-    def initialize(launch_code = 'basic')
+    def initialize(launch_code = 'basic', key_offset_time)
       @launch_code = launch_code
       @status = :ready
+      @key_offset_time
 
-      #@indicator = TwoMan::Indicator.new
-      #@keys = [TwoMan::Key.new, TwoMan::Key.new]
-
-      # PiPiper.watch :pin => 20, :invert => true do |pin|
-      #   puts "Pin changed from #{pin.last_value} to #{pin.value}"
-      #   case pin.value
-      #   when 'left'
-      #     if key2.position == :armed && key2.time < Time.now + 1.second
-      #       arm
-      #     elsif key2.position == :armed && key2.time >= Time.now + 1.second
-      #       error
-      #     elsif key2.position == :ready
-      #       key1.position = :armed
-      #       key1.time = Time.now
-      #     else
-      #     end
-      #   when 'right'
-
-      #   end
-          
-        
-      # end
+      # there is an implict match of default status with the above line and this constructor
+      @indicator = TwoMan::Indicator.new(@status)
+      @keys = {:left => TwoMan::Key.new(20), :right => TwoMan::Key.new(21)}
 
       # PiPiper.watch :pin => 21, :invert => true do |pin|
-      #   puts "Pin changed from #{pin.last_value} to #{pin.value}"
+      #   if @status == :armed
+      #     launch
+      #   end
       # end
-      # code ot be called when turned..
-      #  which way?
-      #  armed vs launch
 
-      launch
+      # loop do
+      #   if !armed? && !launching? &&  @keys[:left].armed? && @keys[:right].armed? && simultaneous?
+      #     arm
+      #   end
+      #   sleep 1
+      #
+      #
+      # end
+    end
 
-      loop do sleep 1 end
+    def simultaneous?
+      @keys[:left].time > @keys[:right].time - @key_offset_time || @keys[:left].time < @keys[:right].time + @key_offset_time
     end
 
     def set_status(status)
@@ -60,6 +50,10 @@ module TwoMan
     def arm
       set_status(:armed)
       @indicator.armed
+
+      @keys.map(&:off)
+      # reset keys time (not really, but dont allow rearm until off)
+
       # armed timer countdown
     end
 
@@ -77,16 +71,6 @@ module TwoMan
 
     def launch?
       @status == :launch
-    end
-
-    def error
-      set_status(:error)
-      @indicator.error
-      # error indicator timer
-    end
-
-    def error?
-      @status == :error
     end
 
   end

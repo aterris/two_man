@@ -6,14 +6,13 @@ lib_path = File.expand_path('../', __FILE__)
 
 # gems
 require 'jenkins_api_client'
-#require 'pi_piper'
+require 'pi_piper'
 
 # lib
 require 'two_man/version'
 require 'two_man/launcher'
-#require 'two_man/indicator'
-#require 'two_man/key'
-#require 'two_man/keys'
+require 'two_man/indicator'
+require 'two_man/key'
 
 # launch codes
 Dir[File.dirname(__FILE__) + '/launch_code/*.rb'].each {|file| require file }

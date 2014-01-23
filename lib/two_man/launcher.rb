@@ -14,7 +14,7 @@ module TwoMan
       @keys = {:left => TwoMan::Key.new(20), :right => TwoMan::Key.new(21)}
 
       # PiPiper.watch :pin => 21, :invert => true do |pin|
-      #   if @status == :armed
+      #   if pin.value == 1 && @status == :armed
       #     launch
       #   end
       # end

@@ -19,15 +19,11 @@ module TwoMan
       @position == :armed
     end
 
-    # def arm
-    #   @position = :armed
-    # end
+    def arm
+      @position = :armed
+    end
 
-    # def disarm
-    #   @position = :off
-    # end
-
-    def off
+    def disarm
       @position = :off
     end
 

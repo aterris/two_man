@@ -51,7 +51,7 @@ module TwoMan
       set_status(:armed)
       @indicator.armed
 
-      @keys.map(&:off)
+      @keys.map(&:disarm)
       # reset keys time (not really, but dont allow rearm until off)
 
       # armed timer countdown

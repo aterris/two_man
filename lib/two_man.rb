@@ -10,9 +10,10 @@ require 'jenkins_api_client'
 
 # lib
 require 'two_man/version'
+require 'two_man/launcher'
+#require 'two_man/indicator'
+#require 'two_man/key'
+#require 'two_man/keys'
 
 # launch codes
-Dir[File.dirname(__FILE__) + '/launch_codes/*.rb'].each {|file| require file }
-
-module TwoMan
-end
+Dir[File.dirname(__FILE__) + '/launch_code/*.rb'].each {|file| require file }

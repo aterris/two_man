@@ -34,4 +34,8 @@ module TwoMan
   end
 end
 
-TwoMan::CLI.start
+begin
+  TwoMan::CLI.start
+rescue Exception => e  
+  puts e.message
+end  

@@ -6,7 +6,9 @@ module TwoMan
     end
 
     def self.validate_launch_code(launch_code)
-      raise 'Invalid Launch Code' unless Command.launch_code_names.include? launch_code
+      if Command.launch_codes.none? {|lc| File.basename(lc, '.rb') == launch_code}
+        raise "Invalid Launch Code [#{launch_code}]"
+      end 
     end
 
     def self.launch_codes

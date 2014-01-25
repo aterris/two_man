@@ -1,14 +1,15 @@
 module TwoMan
   class Launcher
     STATUS = [:ready, :armed, :launch]
+    KEY_OFFSET_TIME = 50
 
     attr_accessor :launch_code, :status, :indicator, :keys, :key_offset_time
 
-    def initialize(launch_code = 'basic', key_offset_time)
+    def initialize(launch_code)
+      raise 'Invalid Launch Code' unless Command.launch_code
       @launch_code = launch_code.classify
-      @status = :ready
-      @key_offset_time = key_offset_time
 
+      @status = :ready
       @indicator = Indicator.new(@status)
       @keys = {:left => Key.new(20), :right => Key.new(21)}
 
@@ -27,7 +28,7 @@ module TwoMan
     end
 
     def simultaneous?
-      @keys[:left].time > @keys[:right].time - @key_offset_time || @keys[:left].time < @keys[:right].time + @key_offset_time
+      @keys[:left].time > @keys[:right].time - KEY_OFFSET_TIME || @keys[:left].time < @keys[:right].time + KEY_OFFSET_TIME
     end
 
     def set_status(status)

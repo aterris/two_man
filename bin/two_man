@@ -25,7 +25,7 @@ module TwoMan
       Command.display_launch_codes
     end
 
-    desc "start", "Start launcher"
+    desc "start LAUNCH_CODE", "Start launcher with LAUNCH_CODE"
     method_options :time => :string
     def start(launch_code)
       Launcher.new(launch_code)

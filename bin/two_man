@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 # encoding: utf-8
 
-require './lib/two_man'
+require File.expand_path('../../lib/two_man', __FILE__)
 require 'thor'
 require 'rainbow/ext/string'
 

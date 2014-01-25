@@ -31,18 +31,9 @@ module TwoMan
       @keys[:left].time > @keys[:right].time - KEY_OFFSET_TIME || @keys[:left].time < @keys[:right].time + KEY_OFFSET_TIME
     end
 
-    def set_status(status)
-      return unless STATUS.include?(status)
-      @status = status
-    end
-
     def ready
       set_status(:ready)
       @indicator.ready
-    end
-
-    def ready?
-      @status == :ready
     end
 
     def arm
@@ -52,22 +43,32 @@ module TwoMan
       # armed timer countdown
     end
 
-    def armed?
-      @status == :armed
-    end
-
     def launch
       set_status(:launch)
       @indicator.on
       # launch indicator timer? or let launch return or not and very quick (ie need min?)
-      #LaunchCode::Basic.launch
       Kernel.const_get("LaunchCode::#{@launch_code}").launch
       @indicator.off
+    end
+
+    # status
+    def set_status(status)
+      return unless STATUS.include?(status)
+      @status = status
+    end
+
+    def ready?
+      @status == :ready
+    end
+
+    def armed?
+      @status == :armed
     end
 
     def launch?
       @status == :launch
     end
+
 
   end
 end

@@ -5,36 +5,36 @@ module TwoMan
       repo = Command.normalize_repo_url(repo)
 
       if File.directory?(repo[:path])
-        raise "Launch code already installed. \n\nDid you mean?\n  two_man update #{repo[:name]}"
+        raise "#{repo[:name]} already installed. \n\nDid you mean?\n  two_man update #{repo[:name]}"
       else
         puts "Installing #{repo[:name]}"
         Git.clone(repo[:url], repo[:name], :path => File.expand_path('../../launch_code', __FILE__))
-        puts "\nSuccess!"
+        puts "  Success!"
       end
     end
 
     def self.update(repo)
       repo = Command.normalize_repo_url(repo)
 
-      if File.directory?(path)
+      if File.directory?(repo[:path])
         puts "Updating #{repo[:name]}"
         git_repo = Git.init(repo[:path])
         git_repo.pull
-        puts "\nSuccess!"
+        puts "  Success!"
       else
-        raise "Launch code not installed. \n\nDid you mean?\n  two_man install #{repo[:name]}"
+        raise "#{repo[:name]} not installed. \n\nDid you mean?\n  two_man install #{repo[:name]}"
       end
     end
 
     def self.uninstall(repo)
       repo = Command.normalize_repo_url(repo)
 
-      if File.directory?(path)
+      if File.directory?(repo[:path])
         puts "Uninstalling #{repo[:name]}"
         FileUtils.rm_rf(repo[:path])
         puts "  Success!"
       else
-        raise "Launch code not installed. \n\nDid you mean?\n  two_man install #{repo[:name]}"
+        raise "#{repo[:name]} not installed. \n\nDid you mean?\n  two_man install #{repo[:name]}"
       end
       
     end
@@ -60,11 +60,13 @@ module TwoMan
     def self.normalize_repo_url(repo)
       github_index = repo.index("github.com")
 
-      if github_index == -1
-        name = File.basename(repo, '.git')
-        url = "git@github.com:#{repo_name}.git"
+      name = repo.dup
+
+      if github_index == nil
+        name.slice!('.git')
+        url = "git@github.com:#{name}.git"
       else
-        name = repo[(github_index + 11)..-5]
+        name = name[(github_index + 11)..-5]
         url = repo
       end
 

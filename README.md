@@ -1,6 +1,8 @@
 # Two Man Rule
 
-#### Install
+### Tester
+
+## Install
 
 ````
 git clone https://github.com/aterris/two_man.git ~/.two_man
@@ -18,17 +20,19 @@ or
 echo 'export PATH="$PATH:$HOME/.two_man/bin:"' >> ~/.zshrc
 ````
 
-###### View Installed Launch Codes
+### Usage
+
+##### View Installed Launch Codes
 ````
 two_man codes
 ````
 
-###### Install Additional Launch Codes
+##### Install Additional Launch Codes
 ````
 two_man install REPO_URL
 ````
 
-#### Start Two Man Rule Device
+##### Start Two Man Rule Device
 
 ````
 two_man start LAUNCH_CODE

@@ -17,24 +17,18 @@ module TwoMan
 
     desc "install URL", "Install launch codes"   # [4]
     def install(url)
-      puts "install #{url}"
-      #TwoMan::Command.install(url)
+      Command.install(url)
     end
 
     desc "codes", "List installed launch codes"   # [4]
     def codes
-      puts "Installed Launch Codes:"
-      Dir['lib/launch_code/**/*.rb'].each do |launch_code|
-        puts "  #{File.basename(launch_code, '.rb')}".color(:green)
-      end
-      #TwoMan::Command.install(url)
+      Command.display_launch_codes
     end
 
     desc "start", "Start launcher"
     method_options :time => :string
     def start(launch_code)
-
-      TwoMan::Launcher.new(launch_code)
+      Launcher.new(launch_code)
     end 
 
   end

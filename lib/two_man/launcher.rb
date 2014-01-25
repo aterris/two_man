@@ -9,8 +9,8 @@ module TwoMan
       @status = :ready
       @key_offset_time = key_offset_time
 
-      @indicator = TwoMan::Indicator.new(@status)
-      @keys = {:left => TwoMan::Key.new(20), :right => TwoMan::Key.new(21)}
+      @indicator = Indicator.new(@status)
+      @keys = {:left => Key.new(20), :right => Key.new(21)}
 
       PiPiper.watch :pin => 17, :invert => true do |pin|
         if pin.value == 1 && @status == :armed

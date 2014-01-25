@@ -11,9 +11,11 @@ require 'active_support/inflector'
 
 # lib
 require 'two_man/version'
+require 'two_man/command'
 require 'two_man/launcher'
 require 'two_man/indicator'
 require 'two_man/key'
+require 'two_man/switch'
 
 # launch codes
 Dir[File.dirname(__FILE__) + '/launch_code/*.rb'].each {|file| require file }

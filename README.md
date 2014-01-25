@@ -6,15 +6,30 @@
 git clone https://github.com/aterris/two_man.git ~/.two_man
 ````
 
-Add to Path
-
-Install Launch Codes
-
-#### Usage
+##### Add to Path
 
 ````
-  two_man codes              # Display installed launch codes
-  two_man help [COMMAND]     # Describe available commands or one specific command
-  two_man install REPO_URL   # Install launch codes at REPO_URL
-  two_man start LAUNCH_CODE  # Start launcher with LAUNCH_CODE
+echo 'export PATH="$PATH:$HOME/.two_man/bin:"' >> ~/.bash_profile
+````
+
+or
+
+````
+echo 'export PATH="$PATH:$HOME/.two_man/bin:"' >> ~/.zshrc
+````
+
+###### View Installed Launch Codes
+````
+two_man codes
+````
+
+###### Install Additional Launch Codes
+````
+two_man install REPO_URL
+````
+
+#### Start Two Man Rule Device
+
+````
+two_man start LAUNCH_CODE
 ````

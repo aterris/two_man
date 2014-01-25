@@ -15,12 +15,12 @@ module TwoMan
   class CLI < Thor
     package_name "Two-Man Rule Launcher"
 
-    desc "install URL", "Install launch codes"   # [4]
+    desc "install REPO_URL", "Install launch codes at REPO_URL"
     def install(url)
       Command.install(url)
     end
 
-    desc "codes", "List installed launch codes"   # [4]
+    desc "codes", "Display installed launch codes"
     def codes
       Command.display_launch_codes
     end

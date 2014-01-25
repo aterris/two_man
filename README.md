@@ -33,9 +33,9 @@ two_man start LAUNCH_CODE
 
 Launch Codes can be loaded from github public or private repos via any of the following formats
 
-* aterris/launch_codes
-* git@github.com:aterris/launch_codes.git
-* https://github.com/aterris/launch_codes.git
+* `aterris/launch_codes`
+* `git@github.com:aterris/launch_codes.git`
+* `https://github.com/aterris/launch_codes.git`
 
 
 ##### Install Launch Codes

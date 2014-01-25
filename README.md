@@ -38,17 +38,17 @@ Launch Codes can be loaded from github public or private repos via any of the fo
 * `https://github.com/aterris/launch_codes.git`
 
 
-##### Install Launch Codes
+##### Install Launch Code Repo
 ````
 two_man install aterris/launch_codes
 ````
 
-##### Update Launch Codes
+##### Update Launch Code Repo
 ````
 two_man install aterris/launch_codes
 ````
 
-##### Uninstall Launch Codes
+##### Uninstall Launch Code Repo
 ````
 two_man install aterris/launch_codes
 ````

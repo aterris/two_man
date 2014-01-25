@@ -53,5 +53,4 @@ begin
   TwoMan::CLI.start
 rescue Exception => e  
   puts e.message
-  #puts e.backtrace
 end  

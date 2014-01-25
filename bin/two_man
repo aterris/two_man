@@ -35,6 +35,11 @@ module TwoMan
       Command.display_launch_codes
     end
 
+    desc "sources", "Display installed launch code sources"
+    def sources
+      Command.display_sources
+    end
+
     desc "enable LAUNCH_CODE", "Enable launcher with LAUNCH_CODE"
     method_options :time => :string
     def enable(launch_code)

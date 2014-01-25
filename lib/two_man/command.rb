@@ -61,6 +61,14 @@ module TwoMan
       end
     end
 
+    def self.display_sources
+      puts "Installed Launch Code Sources:"
+      Dir[File.expand_path('../../launch_code/*/*', __FILE__)].each do |source_directory|
+        source = source_directory.split('/').last(2).join('/')
+        puts "  #{source}".color(:green)
+      end
+    end
+
     private
     def self.normalize_repo_url(repo)
       github_index = repo.index("github.com")

@@ -6,7 +6,7 @@ module TwoMan
     attr_accessor :launch_code, :status, :indicator, :keys, :key_offset_time
 
     def initialize(launch_code)
-      raise 'Invalid Launch Code' unless Command.launch_code
+      Command.validate_launch_code(launch_code)
       @launch_code = launch_code.classify
 
       @status = :ready

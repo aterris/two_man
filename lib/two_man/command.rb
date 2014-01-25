@@ -5,6 +5,10 @@ module TwoMan
       puts "Installing #{url}"
     end
 
+    def self.validate_launch_code(launch_code)
+      raise 'Invalid Launch Code' unless Command.launch_code_names.include? launch_code
+    end
+
     def self.launch_codes
       Dir['lib/launch_code/**/*.rb']
     end

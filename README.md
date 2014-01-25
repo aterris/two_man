@@ -12,6 +12,7 @@ git clone https://github.com/aterris/two_man.git ~/.two_man
 
 ##### Add to Path
 
+add `~/.two_man/bin` to your path
 
 ````
 echo 'export PATH="$PATH:$HOME/.two_man/bin:"' >> ~/.zshrc ( or ~/.bash_profile )

@@ -23,7 +23,7 @@ echo 'export PATH="$PATH:$HOME/.two_man/bin:"' >> ~/.zshrc
 two_man codes
 ````
 
-##### Start Two Man Rule Device
+##### Start Two Man Rule Launcher
 
 ````
 two_man start LAUNCH_CODE

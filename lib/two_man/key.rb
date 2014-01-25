@@ -5,7 +5,7 @@ module TwoMan
 
     def initialize(pin_number)
       PiPiper.watch :pin => 20, :invert => true do |pin|
-        if pin.value == 0
+        if pin.value == 1
           @position == :armed
           @time = Time.now
         else

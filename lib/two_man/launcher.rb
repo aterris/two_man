@@ -7,26 +7,23 @@ module TwoMan
     def initialize(launch_code = 'basic', key_offset_time)
       @launch_code = launch_code
       @status = :ready
-      @key_offset_time
+      @key_offset_time = key_offset_time
 
-      # there is an implict match of default status with the above line and this constructor
       @indicator = TwoMan::Indicator.new(@status)
       @keys = {:left => TwoMan::Key.new(20), :right => TwoMan::Key.new(21)}
 
-      # PiPiper.watch :pin => 21, :invert => true do |pin|
-      #   if pin.value == 1 && @status == :armed
-      #     launch
-      #   end
-      # end
+      PiPiper.watch :pin => 17, :invert => true do |pin|
+        if pin.value == 1 && @status == :armed
+          launch
+        end
+      end
 
-      # loop do
-      #   if !armed? && !launching? &&  @keys[:left].armed? && @keys[:right].armed? && simultaneous?
-      #     arm
-      #   end
-      #   sleep 1
-      #
-      #
-      # end
+      loop do
+        if @keys[:left].armed? && @keys[:right].armed? && simultaneous?
+          arm
+        end
+        sleep 1
+      end
     end
 
     def simultaneous?
@@ -49,11 +46,8 @@ module TwoMan
 
     def arm
       set_status(:armed)
-      @indicator.armed
-
+      #@indicator.armed
       @keys.map(&:disarm)
-      # reset keys time (not really, but dont allow rearm until off)
-
       # armed timer countdown
     end
 
@@ -63,10 +57,11 @@ module TwoMan
 
     def launch
       set_status(:launch)
-      @indicator.launch
+      @indicator.on
       # launch indicator timer? or let launch return or not and very quick (ie need min?)
-      LaunchCode::Basic.launch
-      #Kernel.const_get("LaunchCode::#{@launch_code}").launch
+      #LaunchCode::Basic.launch
+      Kernel.const_get("LaunchCode::#{@launch_code}").launch
+      @indicator.off
     end
 
     def launch?

@@ -5,8 +5,8 @@ lib_path = File.expand_path('../', __FILE__)
 ($:.unshift lib_path) unless ($:.include? lib_path)
 
 # gems
-require 'jenkins_api_client'
-require 'pi_piper'
+#require 'jenkins_api_client'
+#require 'pi_piper'
 
 # lib
 require 'two_man/version'

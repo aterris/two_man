@@ -6,6 +6,8 @@ lib_path = File.expand_path('../', __FILE__)
 #require 'jenkins_api_client'
 #require 'pi_piper'
 require 'active_support/inflector'
+require 'fileutils'
+require 'git'
 
 # lib
 require 'two_man/version'

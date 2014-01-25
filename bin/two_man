@@ -8,16 +8,26 @@ require 'rainbow/ext/string'
 # Usage:
 #
 #  chmod +x bin/two_man
-#  bin/two_man start basic
+#  bin/two_man enable console
 #
 
 module TwoMan
   class CLI < Thor
     package_name "Two-Man Rule Launcher"
 
-    desc "install REPO_URL", "Install launch codes at REPO_URL"
-    def install(url)
-      Command.install(url)
+    desc "install REPO", "Install launch codes at REPO"
+    def install(repo)
+      Command.install(repo)
+    end
+
+    desc "update REPO", "Update launch codes at REPO"
+    def update(repo)
+      Command.update(repo)
+    end
+
+    desc "uninstall REPO", "Uninstall launch codes at REPO"
+    def uninstall(repo)
+      Command.uninstall(repo)
     end
 
     desc "codes", "Display installed launch codes"
@@ -25,9 +35,9 @@ module TwoMan
       Command.display_launch_codes
     end
 
-    desc "start LAUNCH_CODE", "Start launcher with LAUNCH_CODE"
+    desc "enable LAUNCH_CODE", "Enable launcher with LAUNCH_CODE"
     method_options :time => :string
-    def start(launch_code)
+    def enable(launch_code)
       Launcher.new(launch_code)
     end 
 
@@ -38,4 +48,5 @@ begin
   TwoMan::CLI.start
 rescue Exception => e  
   puts e.message
+  #puts e.backtrace
 end  

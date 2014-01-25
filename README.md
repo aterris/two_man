@@ -29,20 +29,27 @@ two_man codes
 two_man start LAUNCH_CODE
 ````
 
-##### Install Additional Launch Codes
+## Manage Launch Codes
+
+Launch Codes can be loaded from github repos (public or private). The repo argument should be in one of the following formats
+
+* aterris/launch_codes
+* git@github.com:aterris/launch_codes.git
+* https://github.com/aterris/launch_codes.git
+
+
+##### Install Launch Codes
 ````
-two_man install REPO
 two_man install aterris/launch_codes
-two_man install git@github.com:aterris/two_man.git
 ````
 
 ##### Update Launch Codes
 ````
-two_man install REPO
+two_man install aterris/launch_codes
 ````
 
 ##### Uninstall Launch Codes
 ````
-two_man install REPO
+two_man install aterris/launch_codes
 ````
 

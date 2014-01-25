@@ -1,5 +1,7 @@
 ## Overview
 
+Two Man is the open-source library the powers the Raspberry Pi based Two-Man Rule Launcher.
+
 ## Getting Started
 
 ##### Install

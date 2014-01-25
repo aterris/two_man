@@ -5,7 +5,7 @@ module TwoMan
     attr_accessor :launch_code, :status, :indicator, :keys, :key_offset_time
 
     def initialize(launch_code = 'basic', key_offset_time)
-      @launch_code = launch_code
+      @launch_code = launch_code.classify
       @status = :ready
       @key_offset_time = key_offset_time
 

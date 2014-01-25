@@ -1,0 +1,43 @@
+#!/usr/bin/env ruby
+# encoding: utf-8
+
+require './lib/two_man'
+require 'thor'
+require 'rainbow/ext/string'
+
+# Usage:
+#
+#  chmod +x bin/two_man
+#  bin/two_man start basic
+#
+
+module TwoMan
+  class CLI < Thor
+    package_name "Two-Man Rule Launcher"
+
+    desc "install URL", "Install launch codes"   # [4]
+    def install(url)
+      puts "install #{url}"
+      #TwoMan::Command.install(url)
+    end
+
+    desc "codes", "List installed launch codes"   # [4]
+    def codes
+      puts "Installed Launch Codes:"
+      Dir['lib/launch_code/**/*.rb'].each do |launch_code|
+        puts "  #{File.basename(launch_code, '.rb')}".color(:green)
+      end
+      #TwoMan::Command.install(url)
+    end
+
+    desc "start", "Start launcher"
+    method_options :time => :string
+    def start(launch_code)
+
+      TwoMan::Launcher.new(launch_code)
+    end 
+
+  end
+end
+
+TwoMan::CLI.start

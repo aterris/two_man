@@ -32,6 +32,11 @@ module TwoMan
       if File.directory?(repo[:path])
         puts "Uninstalling #{repo[:name]}"
         FileUtils.rm_rf(repo[:path])
+
+        parent_path = File.expand_path('../', repo[:path])
+        if Dir.entries(parent_path).length <= 2
+          FileUtils.rm_rf(parent_path)
+        end
         puts "  Success!"
       else
         raise "#{repo[:name]} not installed. \n\nDid you mean?\n  two_man install #{repo[:name]}"

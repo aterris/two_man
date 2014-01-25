@@ -22,6 +22,5 @@ module TwoMan
       end
     end
     
-
   end
 end

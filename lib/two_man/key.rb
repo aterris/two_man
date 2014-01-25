@@ -4,7 +4,7 @@ module TwoMan
     attr_accessor :position, :time
 
     def initialize(pin_number)
-      PiPiper.watch :pin => 20, :invert => true do |pin|
+      PiPiper.watch :pin => pin_number, :invert => true do |pin|
         if pin.value == 1
           @position == :armed
           @time = Time.now

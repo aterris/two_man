@@ -1,7 +1,7 @@
 module TwoMan
   class Launcher
     STATUS = [:ready, :armed, :launch]
-    KEY_OFFSET_TIME = 50
+    KEY_OFFSET_TIME = 0.1
 
     attr_accessor :launch_code, :status, :indicator, :keys, :key_offset_time
 
@@ -12,9 +12,9 @@ module TwoMan
       @status = :ready
       @indicator = Indicator.new(@status)
       @keys = {:left => Key.new(20), :right => Key.new(21)}
-
-      PiPiper.watch :pin => 17, :invert => true do |pin|
-        if pin.value == 1 && @status == :armed
+      
+      @switch = Switch.new(17) do |pin|
+        if pin.value == 1 && armed? # or @switch.armed?
           launch
         end
       end
@@ -33,22 +33,22 @@ module TwoMan
 
     def ready
       set_status(:ready)
-      @indicator.ready
     end
 
     def arm
       set_status(:armed)
-      #@indicator.armed
+      @switch.arm
       @keys.map(&:disarm)
-      # armed timer countdown
     end
 
     def launch
       set_status(:launch)
       @indicator.on
-      # launch indicator timer? or let launch return or not and very quick (ie need min?)
       Kernel.const_get("LaunchCode::#{@launch_code}").launch
       @indicator.off
+      @switch.disarm
+      @switch.position = 0
+      set_status(:ready)
     end
 
     # status
@@ -68,7 +68,6 @@ module TwoMan
     def launch?
       @status == :launch
     end
-
 
   end
 end

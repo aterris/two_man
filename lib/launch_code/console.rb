@@ -3,6 +3,7 @@ module LaunchCode
   
     def self.launch
       puts "Launch!"
+      sleep 3
     end
 
   end

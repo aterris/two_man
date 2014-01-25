@@ -53,3 +53,8 @@ two_man install aterris/launch_codes
 two_man install aterris/launch_codes
 ````
 
+##### View Installed Launch Code Source Repos
+````
+two_man sources
+````
+

@@ -23,13 +23,26 @@ echo 'export PATH="$PATH:$HOME/.two_man/bin:"' >> ~/.zshrc
 two_man codes
 ````
 
-##### Install Additional Launch Codes
-````
-two_man install REPO_URL
-````
-
 ##### Start Two Man Rule Device
 
 ````
 two_man start LAUNCH_CODE
 ````
+
+##### Install Additional Launch Codes
+````
+two_man install REPO
+two_man install aterris/launch_codes
+two_man install git@github.com:aterris/two_man.git
+````
+
+##### Update Launch Codes
+````
+two_man install REPO
+````
+
+##### Uninstall Launch Codes
+````
+two_man install REPO
+````
+

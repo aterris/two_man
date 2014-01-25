@@ -12,7 +12,7 @@ module TwoMan
     end
 
     def self.launch_codes
-      Dir['lib/launch_code/**/*.rb']
+      Dir[File.expand_path('../../launch_code/**/*.rb', __FILE__)]
     end
 
     def self.display_launch_codes

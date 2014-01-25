@@ -16,4 +16,4 @@ require 'two_man/key'
 require 'two_man/switch'
 
 # launch codes
-Dir[File.dirname(__FILE__) + '/launch_code/*.rb'].each {|file| require file }
+TwoMan::Command.launch_codes.each {|file| require file }

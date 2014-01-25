@@ -31,7 +31,7 @@ two_man start LAUNCH_CODE
 
 ## Manage Launch Codes
 
-Launch Codes can be loaded from github repos (public or private). The repo argument should be in one of the following formats
+Launch Codes can be loaded from github public or private repos via any of the following formats
 
 * aterris/launch_codes
 * git@github.com:aterris/launch_codes.git

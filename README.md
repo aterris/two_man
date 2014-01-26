@@ -60,7 +60,7 @@ two_man sources
 
 ## Custom Launch Codes
 
-You can create as many launch codes as you would like and store them in private or public repositories. Your Launch Codes should take the following form
+You can create as many launch codes as you would like and store them in private or public repositories. Your Launch Codes should take the following form.
 
 ````
 module LaunchCode

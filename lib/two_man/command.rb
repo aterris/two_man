@@ -48,16 +48,29 @@ module TwoMan
       if Command.launch_codes.none? {|lc| File.basename(lc, '.rb') == launch_code}
         raise "Invalid Launch Code [#{launch_code}]"
       end 
+
+      launch_code = Command.prep_launch_code(launch_code)
+
+      if !launch_code.respond_to?(:launch)
+        raise "Invalid Launch Code [#{launch_code}]" 
+      end
+
+      launch_code
     end
 
     def self.launch_codes
       Dir[File.expand_path('../../launch_code/**/*.rb', __FILE__)]
     end
 
+    def self.prep_launch_code(launch_code)
+      Kernel.const_get("LaunchCode::#{launch_code.classify}")
+    end
+
     def self.display_launch_codes
-      puts "Installed Launch Codes:"
+      puts "Available Launch Codes:"
       Command.launch_codes.each do |launch_code|
-        puts "  #{File.basename(launch_code, '.rb')}".color(:green)
+        launch_code = File.basename(launch_code, '.rb')
+        puts "  #{launch_code}".color(:green) if Command.prep_launch_code(launch_code).respond_to?(:launch)
       end
     end
 

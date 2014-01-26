@@ -6,8 +6,7 @@ module TwoMan
     attr_accessor :launch_code, :status, :indicator, :keys, :key_offset_time
 
     def initialize(launch_code)
-      Command.validate_launch_code(launch_code)
-      @launch_code = launch_code.classify
+      @launch_code = Command.validate_launch_code(launch_code)
 
       @status = :ready
       @indicator = Indicator.new(@status)
@@ -44,7 +43,7 @@ module TwoMan
     def launch
       set_status(:launch)
       @indicator.on
-      Kernel.const_get("LaunchCode::#{@launch_code}").launch
+      @launch_code.launch
       @indicator.off
       @switch.disarm
       @switch.position = 0

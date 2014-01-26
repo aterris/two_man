@@ -30,7 +30,7 @@ module TwoMan
       Command.uninstall(repo)
     end
 
-    desc "codes", "Display installed launch codes"
+    desc "codes", "Display available launch codes"
     def codes
       Command.display_launch_codes
     end

@@ -1,6 +1,6 @@
 ## Overview
 
-Two Man is the open-source library that powers the Raspberry Pi based Two-Man Rule Launcher.
+Two Man is the library that powers the Two-Man Rule Raspberry Pi Launcher
 
 ## Getting Started
 
@@ -60,4 +60,4 @@ two_man sources
 
 ## Custom Launch Codes
 
-You can create as many launch codes as you would like and store them in private or public repositories. Learn more at https://github.com/aterris/sample_launch_codes
+You can create custom launch codes and load them from public or private repos. Learn more at https://github.com/aterris/sample_launch_codes

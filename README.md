@@ -1,6 +1,6 @@
 ## Overview
 
-Two Man is the library that powers the [Two-Man Rule Raspberry Pi Launcher](http://two-man.com)
+The code that powers the [Two-Man Rule Raspberry Pi Launcher](http://two-man.com)
 
 ## Getting Started
 

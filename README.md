@@ -40,17 +40,17 @@ Launch Codes can be loaded from github public or private repos via any of the fo
 
 ##### Install Launch Code Repo
 ````
-two_man install aterris/launch_codes
+two_man install aterris/sample_launch_codes
 ````
 
 ##### Update Launch Code Repo
 ````
-two_man install aterris/launch_codes
+two_man install aterris/sample_launch_codes
 ````
 
 ##### Uninstall Launch Code Repo
 ````
-two_man install aterris/launch_codes
+two_man install aterris/sample_launch_codes
 ````
 
 ##### View Installed Launch Code Source Repos
@@ -60,17 +60,4 @@ two_man sources
 
 ## Custom Launch Codes
 
-You can create as many launch codes as you would like and store them in private or public repositories. Your Launch Codes should take the following form.
-
-````
-module LaunchCode
-  module CustomLaunchCode
-  
-    def self.launch
-      puts "Launch!"
-    end
-
-  end
-end
-````
-
+You can create as many launch codes as you would like and store them in private or public repositories. Learn more at https://github.com/aterris/sample_launch_codes

@@ -60,4 +60,4 @@ two_man sources
 
 ## Custom Launch Codes
 
-You can create custom launch codes and load them from public or private repos. Learn more at https://github.com/aterris/sample_launch_codes
+You can create custom launch codes and load them from public or private repos. [Learn more](https://github.com/aterris/sample_launch_codes)

@@ -1,11 +1,19 @@
-Two Man is the open-source library that powers the Raspberry Pi based Two-Man Rule Launcher. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+The Two-Man Rule Launcher is a Raspberry Pi powered device inspired by the [Two-Man rule.](http://en.wikipedia.org/wiki/Two-man_rule)
+
+[War Games](http://www.imdb.com/title/tt0086567), one of my favorites movies, depicts the use of the Two-Man rule for nuclear launches in the [opening scene.](http://www.youtube.com/watch?v=ReJ3RltihME)
+
+I'm also interested in finding ways to integrate the creation of software with the physical world. This project was an opporunity to explore these ideas while learning more about hardware.
+
+Currently the launcher powers a manual build step in a Jenkins pipeline which deploys an app to production. However, the launcher can execute any arbitrary ruby code when it receives the launch command.
 
 ![Launch Key](images/launch-key.jpg)
 
 ## Learn More
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+To find out more about the project, contribute or build your own please explore the project on [github.](https://github.com/aterris/two_man)
 
 ## Special Thanks
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+I want to thank [ThoughtWorks](http://thoughtworks.com) for encouraging and supporting the creation of this project through our 100 Days of Hardware initiative and everyone who participated.
+
+I also want to especially thank Tim Kadom whose help was immeasurable on this project. Without his support and motivation this project would have never come to life.

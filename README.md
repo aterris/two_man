@@ -1,4 +1,4 @@
-## Overview
+## Two-Man ![Build Status](https://api.travis-ci.org/aterris/two_man.png?branch=master)
 
 The code that powers the [Two-Man Rule Raspberry Pi Launcher](http://two-man.com)
 

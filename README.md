@@ -1,4 +1,8 @@
-## Two-Man ![Build Status](https://api.travis-ci.org/aterris/two_man.png?branch=master) [![Code Climate](https://codeclimate.com/github/aterris/two_man.png)](https://codeclimate.com/github/aterris/two_man)
+## Two-Man
+
+[![Build Status](https://travis-ci.org/aterris/two_man.png?branch=master)](https://travis-ci.org/aterris/two_man)
+[![Code Climate](https://codeclimate.com/github/aterris/two_man.png)](https://codeclimate.com/github/aterris/two_man)
+[![Coverage Status](https://coveralls.io/repos/aterris/two_man/badge.png)](https://coveralls.io/r/aterris/two_man)
 
 The code that powers the [Two-Man Rule Raspberry Pi Launcher](http://two-man.com)
 

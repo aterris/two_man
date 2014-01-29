@@ -4,7 +4,7 @@ describe TwoMan::Key do
 
   before do
     PiPiper = double.as_null_object
-    @key = TwoMan::Key.new(18)
+    @key = TwoMan::Key.new(23)
   end
 
   it 'can report if its armed' do

@@ -8,3 +8,4 @@ gem 'git'
 gem 'pi_piper'
 
 gem 'rspec'
+gem 'coveralls'

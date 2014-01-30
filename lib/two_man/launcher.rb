@@ -28,7 +28,8 @@ module TwoMan
     end
 
     def simultaneous?
-      @keys[:left].time > @keys[:right].time - KEY_OFFSET_TIME || @keys[:left].time < @keys[:right].time + KEY_OFFSET_TIME
+      return false if @keys[:left].time == nil || @keys[:right].time == nil
+      (@keys[:left].time - @keys[:right].time).abs < KEY_OFFSET_TIME 
     end
 
     def ready

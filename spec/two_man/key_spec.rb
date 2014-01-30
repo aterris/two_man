@@ -17,13 +17,17 @@ describe TwoMan::Key do
   it 'can be armed' do
     @key.armed?.should == false
     @key.arm
+
     @key.armed?.should == true
+    @key.time.should be_within(0.01).of(Time.now)
   end
 
   it 'can be disarmed' do
     @key.arm
     @key.armed?.should == true
     @key.disarm
+    
     @key.armed?.should == false
+    @key.time.should == nil
   end
 end

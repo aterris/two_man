@@ -8,7 +8,26 @@ describe TwoMan::Launcher do
 
   it 'can be initialized'
 
-  it 'can check if two armed keys were armed silmutaneously'
+  describe 'simultaneous' do
+    it 'can return false if the keys are not armed' do
+      @launcher.simultaneous?.should == false
+    end
+
+    it 'can return true when the keys were armed simultaneously' do
+      @launcher.keys[:left].arm
+      @launcher.keys[:right].arm
+
+      @launcher.simultaneous?.should == true
+    end
+
+    it 'can return false if the keys are not armed simultaneously' do
+      @launcher.keys[:left].arm
+      @launcher.keys[:right].arm
+      @launcher.keys[:right].time = Time.now + (TwoMan::Launcher::KEY_OFFSET_TIME * 2)
+      @launcher.simultaneous?.should == false
+    end
+
+  end
 
   describe "actions" do
 

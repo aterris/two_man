@@ -3,7 +3,7 @@ require 'spec_helper'
 describe TwoMan::Switch do
 
   before do
-    PiPiper = double.as_null_object
+    PiPiper ||= double.as_null_object
     @key = TwoMan::Switch.new(23)
   end
 

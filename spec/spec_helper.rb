@@ -17,13 +17,14 @@ RSpec.configure do |config|
   config.formatter = :documentation
 
   config.before(:each) do
-    module PiPiper end
+    module PiPiper 
+      module Pin end
+    end
 
     PiPiper.stub(:watch)
 
     pin = double
     pin.stub(:off).stub(:on)
-    PiPiper::Pin ||= double
     PiPiper::Pin.stub(:new) { pin }
   end
 end

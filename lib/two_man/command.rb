@@ -64,7 +64,6 @@ module TwoMan
 
     def self.prep_launch_code(launch_code)
       "LaunchCode::#{launch_code.classify}".constantize
-      #Kernel.const_get("LaunchCode::#{launch_code.classify}")
     end
 
     def self.display_launch_codes

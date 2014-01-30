@@ -3,7 +3,6 @@ require 'spec_helper'
 describe TwoMan::Launcher do
 
   before do
-    PiPiper ||= double.as_null_object
     @launched = TwoMan::Launcher.new()
   end
 

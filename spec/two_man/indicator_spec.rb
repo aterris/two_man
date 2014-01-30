@@ -3,7 +3,7 @@ require 'spec_helper'
 describe TwoMan::Indicator do
 
   before do
-    PiPiper ||= double.as_null_object
+    #PiPiper ||= double.as_null_object
     #@indicator = TwoMan::Indicator.new()
   end
 

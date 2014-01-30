@@ -19,7 +19,7 @@ describe TwoMan::Key do
     @key.arm
 
     @key.armed?.should == true
-    @key.time.should be_within(0.01).of(Time.now)
+    @key.time.should be_within(0.1).of(Time.now)
   end
 
   it 'can be disarmed' do

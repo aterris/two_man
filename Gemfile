@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'thor'
 gem 'rainbow'
+gem 'sinatra'
 
 gem 'activesupport'
 gem 'git'

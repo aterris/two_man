@@ -40,8 +40,9 @@ module TwoMan
     end
 
     desc "enable LAUNCH_CODE", "Enable launcher with LAUNCH_CODE"
-    method_options :time => :string
+    method_option :web, :type => :boolean, :default => true, :aliases => "-w"
     def enable(launch_code)
+      #Web.run! if options[:web]
       Launcher.new(launch_code)
     end 
 

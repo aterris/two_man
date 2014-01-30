@@ -44,6 +44,10 @@ module TwoMan
       
     end
 
+    def self.launch_codes
+      Dir[File.expand_path('../../launch_code/**/*.rb', __FILE__)]
+    end
+
     def self.validate_launch_code(launch_code)
       if Command.launch_codes.none? {|lc| File.basename(lc, '.rb') == launch_code}
         raise "Invalid Launch Code [#{launch_code}]"
@@ -56,10 +60,6 @@ module TwoMan
       end
 
       launch_code
-    end
-
-    def self.launch_codes
-      Dir[File.expand_path('../../launch_code/**/*.rb', __FILE__)]
     end
 
     def self.prep_launch_code(launch_code)

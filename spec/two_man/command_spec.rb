@@ -6,7 +6,7 @@ describe TwoMan::Command do
   end
 
   describe "install" do
-    it 'can install a launch code repo' do
+    it 'can install a launch code repo'# do
   #     Git.should_receive(:clone).with(
   #       'git@github.com:aterris/launch_codes.git',
   #       'aterris/launch_codes',
@@ -14,14 +14,11 @@ describe TwoMan::Command do
   #     )
       
   #     TwoMan::Command.install('aterris/launch_codes')
-    end
+  #  end
 
     it 'raises an exception if the launch code repo is already installed' do
-  #     # check if path is correct?
-  #     File.stub(:directory? => true)
-  #     Git.should_receive(:message) { raise "aterris/launch_codes already installed. \n\nDid you mean?\n  two_man update aterris/launch_codes"  }
-
-  #     TwoMan::Command.install('aterris/launch_codes')
+      File.stub(:directory? => true)
+      expect { TwoMan::Command.install('aterris/launch_codes') }.to raise_error(/aterris\/launch_codes already installed/)
     end
   end
 
@@ -29,7 +26,10 @@ describe TwoMan::Command do
 
     it 'can update a launch code repo'
 
-    it 'raises an exception if the repo is not already installed'
+    it 'raises an exception if the repo is not already installed' do
+      File.stub(:directory? => false)
+      expect { TwoMan::Command.update('aterris/launch_codes') }.to raise_error(/aterris\/launch_codes not installed/)
+    end
 
   end
 
@@ -37,7 +37,10 @@ describe TwoMan::Command do
 
     it 'can uninstall a launch code repo'
 
-    it 'raises an exception if the repo is not already installed'
+    it 'raises an exception if the repo is not already installed' do
+      File.stub(:directory? => false)
+      expect { TwoMan::Command.uninstall('aterris/launch_codes') }.to raise_error(/aterris\/launch_codes not installed/)
+    end
 
   end
 

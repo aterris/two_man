@@ -6,6 +6,8 @@ if ENV['TRAVIS']
   Coveralls.wear!
 end
 
+ENV['SPEC'] = 'spec'
+
 require File.expand_path('../../lib/two_man', __FILE__)
 
 RSpec.configure do |config|
@@ -15,6 +17,13 @@ RSpec.configure do |config|
   config.formatter = :documentation
 
   config.before(:each) do
-    PiPiper ||= double#.as_null_object
+    module PiPiper end
+
+    PiPiper.stub(:watch)
+
+    pin = double
+    pin.stub(:off).stub(:on)
+    PiPiper::Pin ||= double
+    PiPiper::Pin.stub(:new) { pin }
   end
 end

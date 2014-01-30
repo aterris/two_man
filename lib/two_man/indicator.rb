@@ -8,7 +8,6 @@ module TwoMan
         PiPiper::Pin.new(:pin => 23, :direction => :out),
         PiPiper::Pin.new(:pin => 25, :direction => :out)
       ]
-
       self.send(initial_state)
     end
 

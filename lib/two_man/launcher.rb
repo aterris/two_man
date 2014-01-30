@@ -3,13 +3,13 @@ module TwoMan
     STATUS = [:ready, :armed, :launch]
     KEY_OFFSET_TIME = 0.1
 
-    attr_accessor :launch_code, :status, :indicator, :keys, :key_offset_time
+    attr_accessor :launch_code, :status, :indicator, :keys, :switch
 
     def initialize(launch_code)
       @launch_code = Command.validate_launch_code(launch_code)
 
       @status = :ready
-      @indicator = Indicator.new(@status)
+      @indicator = Indicator.new()
       @keys = {:left => Key.new(20), :right => Key.new(21)}
       
       @switch = Switch.new(17) do |pin|
@@ -22,6 +22,7 @@ module TwoMan
         if @keys[:left].armed? && @keys[:right].armed? && simultaneous?
           arm
         end
+        break if ENV['SPEC']
         sleep 1
       end
     end
@@ -37,7 +38,7 @@ module TwoMan
     def arm
       set_status(:armed)
       @switch.arm
-      @keys.map(&:disarm)
+      @keys.map {|k,v| v.disarm }
     end
 
     def launch

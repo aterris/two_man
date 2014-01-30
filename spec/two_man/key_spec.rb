@@ -3,7 +3,6 @@ require 'spec_helper'
 describe TwoMan::Key do
 
   before do
-    PiPiper.stub(:watch)
     @key = TwoMan::Key.new(23)
   end
 

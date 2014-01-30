@@ -3,7 +3,7 @@ require 'spec_helper'
 describe TwoMan::Launcher do
 
   before do
-    @launched = TwoMan::Launcher.new()
+    @launcher = TwoMan::Launcher.new('console')
   end
 
   it 'can be initialized'
@@ -12,9 +12,25 @@ describe TwoMan::Launcher do
 
   describe "actions" do
 
-    it 'can be set to ready'
+    it 'can be set to ready' do
+      @launcher.set_status(:armed)
+      @launcher.armed?.should == true
+      
+      @launcher.ready
 
-    it 'can be armed'
+      @launcher.ready?.should == true
+    end
+
+    it 'can be armed' do
+      @launcher.ready?.should == true
+      @launcher.switch.should_receive(:arm)
+      @launcher.keys[:left].should_receive(:disarm)
+      @launcher.keys[:right].should_receive(:disarm)
+
+      @launcher.arm
+
+      @launcher.armed?.should == true
+    end
 
     it 'can be launched'
 
@@ -22,15 +38,34 @@ describe TwoMan::Launcher do
 
   describe 'status' do
 
-    it 'can set a valid status'
+    it 'can set a valid status' do
+      @launcher.status.should == :ready
+      @launcher.set_status(:armed)
+      @launcher.status.should == :armed
+    end
 
-    it 'rejects an invalid status'
+    it 'rejects an invalid status' do
+      @launcher.status.should == :ready
+      @launcher.set_status(:invalid)
+      @launcher.status.should == :ready
+    end
 
-    it 'can indicate if the current status is ready'
+    it 'can indicate if the current status is ready' do
+      @launcher.status.should == :ready
+      @launcher.ready?.should == true
+    end
 
-    it 'can indicate if the current status is armed'
+    it 'can indicate if the current status is armed' do
+      @launcher.status.should == :ready
+      @launcher.set_status(:armed)
+      @launcher.armed?.should == true
+    end
 
-    it 'can indicate if the current status is launch'
+    it 'can indicate if the current status is launch' do
+      @launcher.status.should == :ready
+      @launcher.set_status(:launch)
+      @launcher.launch?.should == true
+    end
   end
 
 end

@@ -5,7 +5,7 @@ module TwoMan
 
     attr_accessor :launch_code, :status, :indicator, :keys, :switch
 
-    def initialize(launch_code)
+    def initialize(launch_code, web)
       @launch_code = Command.validate_launch_code(launch_code)
 
       @status = :ready
@@ -15,6 +15,12 @@ module TwoMan
       @switch = Switch.new(17) do |pin|
         if pin.value == 1 && armed? # or @switch.armed?
           launch
+        end
+      end
+
+      if web
+        Thread.new do
+          Web.run!
         end
       end
 

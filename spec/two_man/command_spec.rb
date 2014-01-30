@@ -28,7 +28,8 @@ describe TwoMan::Command do
 
   it 'can prep a launch code for execution' do
     const = TwoMan::Command.prep_launch_code('console')
-    puts const
+    puts "Const: #{const}"
+
     const.should == LaunchCode::Console
   end
 

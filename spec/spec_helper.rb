@@ -1,8 +1,10 @@
 require 'rspec'
 require 'coveralls'
 
-Coveralls::Output.silent = true if ENV['TRAVIS']
-Coveralls.wear!
+if ENV['TRAVIS']
+  Coveralls::Output.silent = true
+  Coveralls.wear!
+end
 
 require File.expand_path('../../lib/two_man', __FILE__)
 

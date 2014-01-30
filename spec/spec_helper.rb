@@ -1,9 +1,14 @@
 require 'rspec'
+require 'simplecov'
 require 'coveralls'
 
 if ENV['TRAVIS']
   Coveralls::Output.silent = true
-  Coveralls.wear!
+
+  SimpleCov.formatter = Coveralls::SimpleCov::Formatter
+  SimpleCov.start do
+    add_filter 'lib/launch_code/'
+  end
 end
 
 ENV['SPEC'] = 'spec'

@@ -5,7 +5,7 @@ describe TwoMan::Command do
   before do
   end
 
-  # describe "#install" do
+  # describe "install" do
   #   it 'can install a launch code repo' do
   #     Git.should_receive(:clone).with(
   #       'git@github.com:aterris/launch_codes.git',
@@ -25,14 +25,44 @@ describe TwoMan::Command do
   #   end
   # end
 
+  describe "update" do
 
-  it 'can prep a launch code for execution' do
-    const = TwoMan::Command.prep_launch_code('console')
-    puts "Const: #{const}"
+    it 'can update a launch code repo'
 
-    const.should == LaunchCode::Console
+    it 'raises an exception if the repo is not already installed'
+
   end
 
+  describe "uninstall" do
+
+    it 'can uninstall a launch code repo'
+
+    it 'raises an exception if the repo is not already installed'
+
+  end
+
+  describe 'launch code management' do
+
+    it 'can validate a launch code'
+
+    it 'can return all launch code files'
+
+    it 'can prep a launch code for execution' do
+      const = TwoMan::Command.prep_launch_code('console')
+      puts "Const: #{const}"
+
+      const.should == ::LaunchCode::Console
+    end
+  end
+
+  describe 'display' do
+
+    it 'can display launch codes'
+
+    it 'can display launch code source repos'
+
+  end
+  
   it "can normalize repo urls" do
     repo_urls = [
       'aterris/launch_codes',

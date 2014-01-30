@@ -45,7 +45,11 @@ describe TwoMan::Command do
 
     it 'can validate a launch code'
 
-    it 'can return all launch code files'
+    it 'can return all launch code files' do
+      launch_codes = TwoMan::Command.launch_codes
+      launch_codes.length.should == 1
+      launch_codes.first.should include('lib/launch_code/console.rb')
+    end
 
     it 'can prep a launch code for execution' do
       const = TwoMan::Command.prep_launch_code('console')
@@ -55,7 +59,11 @@ describe TwoMan::Command do
 
   describe 'display' do
 
-    it 'can display launch codes'
+    it 'can display launch codes' do
+      $stdout.should_receive(:puts).with('Available Launch Codes:')
+      $stdout.should_receive(:puts).with("\e[32m  console\e[0m")
+      TwoMan::Command.display_launch_codes
+    end
 
     it 'can display launch code source repos'
 

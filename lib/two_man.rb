@@ -5,6 +5,7 @@ lib_path = File.expand_path('../', __FILE__)
 # gems
 #require 'pi_piper'
 require 'active_support/inflector'
+require 'rainbow/ext/string'
 require 'fileutils'
 require 'git'
 

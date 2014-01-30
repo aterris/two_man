@@ -3,7 +3,7 @@ require 'spec_helper'
 describe TwoMan::Launcher do
 
   before do
-    @launcher = TwoMan::Launcher.new('console')
+    @launcher = TwoMan::Launcher.new('console', false)
   end
 
   it 'can be initialized'

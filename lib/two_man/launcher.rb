@@ -54,7 +54,6 @@ module TwoMan
       @launch_code.launch
       @indicator.off
       @switch.disarm
-      @switch.position = 0
       set_status(:ready)
     end
 

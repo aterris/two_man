@@ -51,7 +51,17 @@ describe TwoMan::Launcher do
       @launcher.armed?.should == true
     end
 
-    it 'can be launched'
+    it 'can be launched' do
+      @launcher.should_receive(:set_status).with(:launch)
+      @launcher.indicator.should_receive(:on)
+      @launcher.launch_code.should_receive(:launch)
+
+      @launcher.indicator.should_receive(:off)
+      @launcher.switch.should_receive(:disarm)
+      @launcher.should_receive(:set_status).with(:ready)
+
+      @launcher.launch
+    end
 
   end
 

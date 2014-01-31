@@ -68,7 +68,15 @@ describe TwoMan::Command do
       TwoMan::Command.display_launch_codes
     end
 
-    it 'can display launch code source repos'
+    it 'can display launch code source repos' do
+      FileUtils.mkdir_p(File.expand_path('../../../lib/launch_code/aterris/launch_codes', __FILE__))
+
+      $stdout.should_receive(:puts).with('Installed Launch Code Sources:')
+      $stdout.should_receive(:puts).with("\e[32m  aterris/launch_codes\e[0m")
+      TwoMan::Command.display_sources
+
+      FileUtils.rm_rf(File.expand_path('../../../lib/launch_code/aterris', __FILE__))
+    end
 
   end
   

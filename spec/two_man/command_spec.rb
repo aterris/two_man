@@ -55,7 +55,24 @@ describe TwoMan::Command do
 
   describe 'launch code management' do
 
-    it 'can validate a launch code'
+    it 'can validate a proper launch code' do
+      launch_code = TwoMan::Command.validate_launch_code('console')
+      launch_code.should == LaunchCode::Console
+    end
+
+    it 'can reject an invalid launch code because it does not exist' do
+      expect { TwoMan::Command.validate_launch_code('fake') }.to raise_error(/Invalid Launch Code \[fake\]/)
+    end
+
+    it 'can reject an invalid launch code because it does not have a launch method'# do
+      #path = File.expand_path('../../../lib/launch_code', __FILE__)
+      #FileUtils.mkdir_p(File.expand_path('../../../lib/launch_code/aterris/launch_codes', __FILE__))
+      #File.open(path + '/aterris/launch_codes/fake.rb', 'w') { |file| file.write("module LaunchCode module Fake end end") }
+
+      #expect { TwoMan::Command.validate_launch_code('fake') }.to raise_error(/Invalid Launch Code3 \[fake\]/)
+
+      #FileUtils.rm_rf(File.expand_path('../../../lib/launch_code/aterris', __FILE__))
+    #end
 
     it 'can return all launch code files' do
       launch_codes = TwoMan::Command.launch_codes
@@ -65,7 +82,7 @@ describe TwoMan::Command do
 
     it 'can prep a launch code for execution' do
       const = TwoMan::Command.prep_launch_code('console')
-      const.should == ::LaunchCode::Console
+      const.should == LaunchCode::Console
     end
   end
 

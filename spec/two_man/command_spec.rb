@@ -46,11 +46,24 @@ describe TwoMan::Command do
 
     it 'can uninstall a launch code repo' do
       FileUtils.mkdir_p(File.expand_path('../../../lib/launch_code/aterris/launch_codes', __FILE__))
+      
       TwoMan::Command.uninstall('aterris/launch_codes')
+      
       File.directory?(File.expand_path('../../../lib/launch_code/aterris', __FILE__)).should == false
     end
 
-    it 'can uninstall a launch code repo that shares a user directory'
+    it 'can uninstall a launch code repo that shares a user directory' do
+      FileUtils.mkdir_p(File.expand_path('../../../lib/launch_code/aterris/launch_codes', __FILE__))
+      FileUtils.mkdir_p(File.expand_path('../../../lib/launch_code/aterris/more', __FILE__))
+
+      TwoMan::Command.uninstall('aterris/more')
+
+      File.directory?(File.expand_path('../../../lib/launch_code/aterris/more', __FILE__)).should == false
+      File.directory?(File.expand_path('../../../lib/launch_code/aterris/launch_codes', __FILE__)).should == true
+
+      TwoMan::Command.uninstall('aterris/launch_codes')
+      File.directory?(File.expand_path('../../../lib/launch_code/aterris/launch_codes', __FILE__)).should == false
+    end
 
     it 'raises an exception if the repo is not already installed' do
       File.stub(:directory? => false)

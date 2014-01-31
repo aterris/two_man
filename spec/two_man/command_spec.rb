@@ -6,15 +6,15 @@ describe TwoMan::Command do
   end
 
   describe "install" do
-    it 'can install a launch code repo'# do
-  #     Git.should_receive(:clone).with(
-  #       'git@github.com:aterris/launch_codes.git',
-  #       'aterris/launch_codes',
-  #       hash_including(:path => 'b')
-  #     )
+    it 'can install a launch code repo' do
+      Git.should_receive(:clone).with(
+        'git@github.com:aterris/launch_codes.git',
+        'aterris/launch_codes',
+        {:path => File.expand_path('../../../lib/launch_code', __FILE__)}
+      )
       
-  #     TwoMan::Command.install('aterris/launch_codes')
-  #  end
+      TwoMan::Command.install('aterris/launch_codes')
+   end
 
     it 'raises an exception if the launch code repo is already installed' do
       File.stub(:directory? => true)
@@ -24,7 +24,16 @@ describe TwoMan::Command do
 
   describe "update" do
 
-    it 'can update a launch code repo'
+    it 'can update a launch code repo' do
+      File.stub(:directory? => true)
+      path = File.expand_path('../../../lib/launch_code', __FILE__)
+
+      repo = double
+      repo.stub(:pull)
+      repo.should_receive(:pull)
+      Git.should_receive(:init).with(path + '/aterris/launch_codes') { repo }
+      TwoMan::Command.update('aterris/launch_codes')
+    end
 
     it 'raises an exception if the repo is not already installed' do
       File.stub(:directory? => false)

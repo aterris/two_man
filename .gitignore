@@ -2,3 +2,4 @@ lib/launch_code/*
 !lib/launch_code/console.rb
 coverage/
 .ruby-version
+.DS_Store

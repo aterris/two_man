@@ -50,16 +50,16 @@ module TwoMan
 
     def self.validate_launch_code(launch_code)
       if Command.launch_codes.none? {|lc| File.basename(lc, '.rb') == launch_code}
-        raise "Invalid Launch Code [#{launch_code}]"
+        raise "Launch Code Not Found [#{launch_code}]"
       end 
 
-      launch_code = Command.prep_launch_code(launch_code)
+      prepped_launch_code = Command.prep_launch_code(launch_code)
 
-      if !launch_code.respond_to?(:launch)
+      if !prepped_launch_code.respond_to?(:launch)
         raise "Invalid Launch Code [#{launch_code}]" 
       end
 
-      launch_code
+      prepped_launch_code
     end
 
     def self.prep_launch_code(launch_code)

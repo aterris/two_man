@@ -6,6 +6,10 @@ describe TwoMan::Command do
   end
 
   describe "install" do
+    before do
+      $stdout.stub(:puts)
+    end
+
     it 'can install a launch code repo' do
       Git.should_receive(:clone).with(
         'git@github.com:aterris/launch_codes.git',
@@ -23,7 +27,10 @@ describe TwoMan::Command do
   end
 
   describe "update" do
-
+    before do
+      $stdout.stub(:puts)
+    end
+    
     it 'can update a launch code repo' do
       File.stub(:directory? => true)
       path = File.expand_path('../../../lib/launch_code', __FILE__)
@@ -43,6 +50,9 @@ describe TwoMan::Command do
   end
 
   describe "uninstall" do
+    before do
+      $stdout.stub(:puts)
+    end
 
     it 'can uninstall a launch code repo' do
       FileUtils.mkdir_p(File.expand_path('../../../lib/launch_code/aterris/launch_codes', __FILE__))
@@ -80,18 +90,19 @@ describe TwoMan::Command do
     end
 
     it 'can reject an invalid launch code because it does not exist' do
-      expect { TwoMan::Command.validate_launch_code('fake') }.to raise_error(/Invalid Launch Code \[fake\]/)
+      expect { TwoMan::Command.validate_launch_code('fake') }.to raise_error(/Launch Code Not Found \[fake\]/)
     end
 
-    it 'can reject an invalid launch code because it does not have a launch method'# do
-      #path = File.expand_path('../../../lib/launch_code', __FILE__)
-      #FileUtils.mkdir_p(File.expand_path('../../../lib/launch_code/aterris/launch_codes', __FILE__))
-      #File.open(path + '/aterris/launch_codes/fake.rb', 'w') { |file| file.write("module LaunchCode module Fake end end") }
+    it 'can reject an invalid launch code because it does not have a launch method' do
+      path = File.expand_path('../../../lib/launch_code', __FILE__)
+      FileUtils.mkdir_p(File.expand_path('../../../lib/launch_code/aterris/launch_codes', __FILE__))
+      File.open(path + '/aterris/launch_codes/fake.rb', 'w') { |file| file.write("module LaunchCode module Fake end end") }
+      require path + '/aterris/launch_codes/fake.rb'
 
-      #expect { TwoMan::Command.validate_launch_code('fake') }.to raise_error(/Invalid Launch Code3 \[fake\]/)
+      expect { TwoMan::Command.validate_launch_code('fake') }.to raise_error(/Invalid Launch Code \[fake\]/)
 
-      #FileUtils.rm_rf(File.expand_path('../../../lib/launch_code/aterris', __FILE__))
-    #end
+      FileUtils.rm_rf(File.expand_path('../../../lib/launch_code/aterris', __FILE__))
+    end
 
     it 'can return all launch code files' do
       launch_codes = TwoMan::Command.launch_codes

@@ -18,11 +18,11 @@ module TwoMan
         end
       end
 
-      if web
-        Thread.new do
-          Web.run!
-        end
-      end
+      # if web
+      #   Thread.new do
+      #     Web.run!
+      #   end
+      # end
 
       loop do
         if @keys[:left].armed? && @keys[:right].armed? && simultaneous?

@@ -6,8 +6,6 @@ describe TwoMan::Launcher do
     @launcher = TwoMan::Launcher.new('console', false)
   end
 
-  it 'can be initialized'
-
   describe 'simultaneous' do
     it 'can return false if the keys are not armed' do
       @launcher.simultaneous?.should == false

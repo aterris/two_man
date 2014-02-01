@@ -20,6 +20,12 @@ git clone https://github.com/aterris/two_man.git ~/.two_man
 echo 'export PATH="$PATH:$HOME/.two_man/bin"' >> ~/.zshrc
 ````
 
+##### Setup
+
+````
+two_man setup
+````
+
 ## Usage
 
 ##### View Installed Launch Codes
@@ -49,12 +55,12 @@ two_man install aterris/sample_launch_codes
 
 ##### Update Launch Code Repo
 ````
-two_man install aterris/sample_launch_codes
+two_man update aterris/sample_launch_codes
 ````
 
 ##### Uninstall Launch Code Repo
 ````
-two_man install aterris/sample_launch_codes
+two_man uninstall aterris/sample_launch_codes
 ````
 
 ##### View Installed Launch Code Source Repos

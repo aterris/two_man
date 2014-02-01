@@ -47,9 +47,7 @@ module TwoMan
 
     desc "setup", "Setup Two-Man"
     def setup
-      Dir.chdir(File.expand_path('../../', __FILE__)) do
-        system 'bundle install'
-      end
+      Command.setup
     end
 
   end

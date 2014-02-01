@@ -16,7 +16,8 @@ describe TwoMan::Command do
         'aterris/launch_codes',
         {:path => File.expand_path('../../../lib/launch_code', __FILE__)}
       )
-      
+      TwoMan::Command.should_receive(:setup)
+
       TwoMan::Command.install('aterris/launch_codes')
    end
 
@@ -39,6 +40,8 @@ describe TwoMan::Command do
       repo.stub(:pull)
       repo.should_receive(:pull)
       Git.should_receive(:init).with(path + '/aterris/launch_codes') { repo }
+      TwoMan::Command.should_receive(:setup)
+
       TwoMan::Command.update('aterris/launch_codes')
     end
 
@@ -80,6 +83,13 @@ describe TwoMan::Command do
       expect { TwoMan::Command.uninstall('aterris/launch_codes') }.to raise_error(/aterris\/launch_codes not installed/)
     end
 
+  end
+
+  it 'can setup' do
+    Dir.should_receive(:chdir).with(File.expand_path('../../../', __FILE__))
+    #Kernel.should_receive(:system)
+
+    TwoMan::Command.setup
   end
 
   describe 'launch code management' do

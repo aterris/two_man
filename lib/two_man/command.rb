@@ -9,6 +9,7 @@ module TwoMan
       else
         puts "Installing #{repo[:name]}"
         Git.clone(repo[:url], repo[:name], :path => File.expand_path('../../launch_code', __FILE__))
+        Command.setup
         puts "  Success!"
       end
     end
@@ -20,6 +21,7 @@ module TwoMan
         puts "Updating #{repo[:name]}"
         git_repo = Git.init(repo[:path])
         git_repo.pull
+        Command.setup
         puts "  Success!"
       else
         raise "#{repo[:name]} not installed. \n\nDid you mean?\n  two_man install #{repo[:name]}"
@@ -42,6 +44,12 @@ module TwoMan
         raise "#{repo[:name]} not installed. \n\nDid you mean?\n  two_man install #{repo[:name]}"
       end
       
+    end
+
+    def self.setup
+      Dir.chdir(File.expand_path('../../../', __FILE__)) do
+        Kernel.system 'bundle install --quiet'
+      end
     end
 
     def self.launch_codes

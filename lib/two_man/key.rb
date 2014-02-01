@@ -5,8 +5,12 @@ module TwoMan
 
     def initialize(pin_number)
       PiPiper.watch :pin => pin_number, :invert => true do |pin|
-        (pin.value == 1) ? arm : disarm
+        toggle(pin.value)
       end
+    end
+
+    def toggle(value)
+      (value == 1) ? arm : disarm
     end
 
     def armed?

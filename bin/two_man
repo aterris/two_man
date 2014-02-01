@@ -50,6 +50,8 @@ end
 
 begin
   TwoMan::CLI.start
+rescue SystemExit, Interrupt
+  puts "\n\nShutting Down!"
 rescue Exception => e  
   puts e.message
 end  

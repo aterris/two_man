@@ -36,7 +36,7 @@ two_man codes
 ##### Start Two Man Rule Launcher
 
 ````
-two_man start LAUNCH_CODE
+two_man enable LAUNCH_CODE
 ````
 
 ## Manage Launch Codes

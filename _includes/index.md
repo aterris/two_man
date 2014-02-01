@@ -6,7 +6,7 @@ I'm also interested in finding ways to integrate the creation of software with t
 
 Currently the launcher powers a manual build step in a Jenkins pipeline which deploys an app to production. However, the launcher can execute any arbitrary ruby code when it receives the launch command.
 
-![Launch Key](images/keys.jpg)
+![Launch Keys](images/keys.jpg)
 
 ## Learn More
 

@@ -43,7 +43,14 @@ module TwoMan
     method_option :web, :type => :boolean, :default => true, :aliases => "-w"
     def enable(launch_code)
       Launcher.new(launch_code, options[:web])
-    end 
+    end
+
+    desc "setup", "Setup Two-Man"
+    def setup
+      Dir.chdir(File.expand_path('../../', __FILE__)) do
+        system 'bundle install'
+      end
+    end
 
   end
 end
